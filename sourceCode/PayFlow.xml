@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Tue Aug 14 13:43:53 PDT 2012 -->
+
+<payments>
+   <payment>
+      <name>Under graduate admissions application</name>
+      <payflow-code>ADMUNGRADAPP</payflow-code>
+      <inform-emails>admissions@ajula.edu</inform-emails>
+      <email-from>InSite@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Undergraduate admissions - Application Fee online payment</subject-line>
+      <message>Undergraduate Admissions application online payment</message>
+      <form-name></form-name>
+   </payment>
+   <payment>
+      <name>Request a transcript</name>
+      <payflow-code>AJUTRF</payflow-code>
+      <inform-emails>transcripts@ajula.edu</inform-emails>
+      <email-from>Website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Online Transcript Request confirmation from American Jewish University</subject-line>
+      <message>Online Transcript Request confirmation from American Jewish University</message>
+      <form-name>transcriptrequest.aspx</form-name>
+   </payment>
+   <payment>
+      <name>Wcce online catalog registration</name>
+      <payflow-code>wccecatalog</payflow-code>
+      <inform-emails>wcce@ajula.edu</inform-emails>
+      <email-from>Website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>WCCE: Online order from our catalog</subject-line>
+      <message>WCCE: Registratin using new catalog registration page</message>
+      <form-name>confirmandpay.aspx</form-name>
+   </payment>
+   <payment>
+      <name>Donate online - gifts and tributes</name>
+      <payflow-code>GivingGift</payflow-code>
+      <inform-emails>AdvPaymentConf@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>yalovsky@ajula.edu</admin-emails>
+      <subject-line>Make an Online Gift or Tribute to AJU</subject-line>
+      <message>Make an Online Gift or Tribute to AJU:</message>
+      <form-name>frGift2MP.aspx frTributeMP.aspx</form-name>
+   </payment>
+   <payment>
+      <name>BCI online payment</name>
+      <payflow-code>BCIPayment</payflow-code>
+      <inform-emails>bci@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>BCI Online payment restults</subject-line>
+      <message>BCI online payment</message>
+      <form-name></form-name>
+   </payment>
+   <payment>
+      <name>Moriah forms</name>
+      <payflow-code>MoriahMembership</payflow-code>
+      <inform-emails>moriahonline@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Moriah Membership online registration restults</subject-line>
+      <message>Moriah Membership online registration restults:</message>
+      <form-name>frMoriahRegistration.aspx frMoriahBreakfast.aspx frAlumniRegistration.aspx</form-name>
+   </payment>
+   <payment>
+      <name>MBA Online application</name>
+      <payflow-code>MBAAPPADMIT</payflow-code>
+      <inform-emails>mbaoffice@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>MBA Online application results</subject-line>
+      <message>MBA Online application results</message>
+      <form-name>MBAApplication.asp</form-name>
+   </payment>
+   <payment>
+      <name>Camp Alonim Alumni event</name>
+      <payflow-code>CampAlonimAlumniEvent</payflow-code>
+      <inform-emails>alonim@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Camp Alonim Alumni Event summer 2010 Form</subject-line>
+      <message>Camp Alonim Alumni Event summer 2010 Form</message>
+      <form-name>CampAlonimAlumniEvent.asp on Inet2</form-name>
+   </payment>
+   <payment>
+      <name>Moriah Golf Classic</name>
+      <payflow-code>MoriahGolfClassic</payflow-code>
+      <inform-emails>advPaymentConf@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Moriah Golf Classic 2012</subject-line>
+      <message>Moriah Golf Classic 2012</message>
+      <form-name>frMoriahGolf.aspx</form-name>
+   </payment>
+   <payment>
+      <name>Ziegler school Beit Midrash</name>
+      <payflow-code>BeitMidrash</payflow-code>
+      <inform-emails>AAlexander@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Ziegler Beit Midrash Event</subject-line>
+      <message>Ziegler Beit Midrash Event</message>
+      <form-name>BeitMidrashNew.asp</form-name>
+   </payment>
+   <payment>
+      <name>Taste of Alonim</name>
+      <payflow-code>Tasteofalonim</payflow-code>
+      <inform-emails>AdvPaymentConf@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Taste of Alonim</subject-line>
+      <message>Taste of Alonim</message>
+      <form-name>frTasteofAlonim.aspx</form-name>
+   </payment>
+   <payment>
+      <name>Development Women Lunch and Learn</name>
+      <payflow-code>LunchandLearn11</payflow-code>
+      <inform-emails>AdvPaymentConf@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Women Lunch and Learn</subject-line>
+      <message>Women Lunch and Learn</message>
+      <form-name>frLunchnLearn.aspx</form-name>
+   </payment>
+   <payment>
+      <name>Honoring Dr. Wexler tribute oppertunities</name>
+      <payflow-code>TributeOpportunities</payflow-code>
+      <inform-emails>AdvPaymentConf@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Honoring Dr. Wexler</subject-line>
+      <message>Honoring Dr. Wexler</message>
+      <form-name>ributeOpportunities.asp on Inet2</form-name>
+   </payment>
+   <payment>
+      <name>Camp Alonim Summer Reunion</name>
+      <payflow-code>CampAlonimSummerReunions</payflow-code>
+      <inform-emails>AlonimEvents@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Alonim Alumni-2012</subject-line>
+      <message>Alonim Alumni-2012</message>
+      <form-name>CampAlonimSummerReunions.asp</form-name>
+   </payment>
+   <payment>
+      <name>WCCE - Family Weekend 2013</name>
+      <payflow-code>WCCEFMFU2012</payflow-code>
+      <inform-emails>AdvPaymentConf@ajula.edu;DStuart@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>WCCE - Family Weekend 2013</subject-line>
+      <message>WCCE - Family Weekend 2013</message>
+      <form-name>fr12weekendAlonim.aspx still on Inet2 might be reused</form-name>
+   </payment>
+   <payment>
+      <name>Development Women Lunch and Learn memberhsip registration</name>
+      <payflow-code>DEVWLL</payflow-code>
+      <inform-emails>AdvPaymentConf@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Women Lunch and Learn membership</subject-line>
+      <message>Women Lunch and Learn membership</message>
+      <form-name>frWLL.aspx</form-name>
+   </payment>
+   <payment>
+      <name>CAS online Fee only payment</name>
+      <payflow-code>CASAPPFEE</payflow-code>
+      <inform-emails>admissions@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>CAS Application Fees</subject-line>
+      <message>CAS Application Fees</message>
+      <form-name>frNewOnlinePaymentForCas.aspx</form-name>
+   </payment>
+   <payment>
+      <name>Development Moriahopoly</name>
+      <payflow-code>MORIAHOLOPY12</payflow-code>
+      <inform-emails>AdvPaymentConf@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Moriahopoly Event</subject-line>
+      <message>Moriahopoly Event</message>
+      <form-name>frMoriahopoly.aspx</form-name>
+   </payment>
+   <payment>
+      <name>Alumni walkway brick online form</name>
+      <payflow-code>ALUMWALKWAY</payflow-code>
+      <inform-emails>AdvPaymentConf@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Alumni walkway brick</subject-line>
+      <message>Alumni walkway brick</message>
+      <form-name>frAlumniWalkway.aspx</form-name>
+   </payment>
+   <payment>
+      <name>Intorudction to Judaism online regisgration</name>
+      <payflow-code>INTROREGISTRATION</payflow-code>
+      <inform-emails>intro@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Intro Registration</subject-line>
+      <message>Intro Registration</message>
+      <form-name>frIntroRegistration.aspx</form-name>
+   </payment>
+   <payment>
+      <name>Intorudction to Judaism Shabbaton</name>
+      <payflow-code>introshabbaton</payflow-code>
+      <inform-emails>intro@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Intro Shabbaton Registration</subject-line>
+      <message>Intro Shabbaton Registration</message>
+      <form-name>frIntroShabbaton.aspx</form-name>
+   </payment>
+   <payment>
+      <name>BBI History book sale online</name>
+      <payflow-code>bbihistorybook</payflow-code>
+      <inform-emails>AdvPaymentConf@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>BBI History Book Purchase</subject-line>
+      <message>BBI History Book Purchase</message>
+      <form-name>frBBIHistoryBook.aspx</form-name>
+   </payment>
+   <payment>
+      <name></name>
+      <payflow-code></payflow-code>
+      <inform-emails></inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line></subject-line>
+      <message></message>
+      <form-name></form-name>
+   </payment>
+   <payment>
+      <name>testing</name>
+      <payflow-code>testing</payflow-code>
+      <inform-emails>myalovsky@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>myalovsky@ajula.edu</admin-emails>
+      <subject-line>Online payment confirmation</subject-line>
+      <message>Online testing results</message>
+      <form-name>BCIOnlinePayment.asp</form-name>
+   </payment>
+   <payment>
+      <![CDATA[DONT REMOVE THIS SECTION]]>
+      <name>default</name>
+      <payflow-code>default</payflow-code>
+      <inform-emails>myalovsky@ajula.edu</inform-emails>
+      <email-from>website@ajula.edu</email-from>
+      <email-from-name>AJU Online payment</email-from-name>
+      <admin-emails>yalovsky@ajula.edu</admin-emails>
+      <subject-line>Online payment confirmation</subject-line>
+      <message>This is a confirmation for payment received</message>
+      <form-name></form-name>
+   </payment>
+</payments>
