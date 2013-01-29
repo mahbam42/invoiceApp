@@ -10,8 +10,8 @@
     <form id="form1" runat="server">
     <div>
         <h1>Max Brother Invoices</h1>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-        <asp:gridview ID="Gridview1"  runat="server"></asp:gridview>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br />
+        <asp:gridview ID="Gridview1" AllowSorting="true" EditIndex="1"  runat="server"></asp:gridview>
     </div>
     </form>
 </body>

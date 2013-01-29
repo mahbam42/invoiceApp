@@ -4,23 +4,30 @@ Imports System.Xml
 Imports System.Diagnostics
 Imports System.IO
 Imports System.Configuration
+Imports System.Data
 
 Partial Class invoice
     Inherits System.Web.UI.Page
 
+    Public pathToXML As String = "C:\Users\Max\Dropbox\Freelance\invoiceApp\invoices.xml"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        xmlRead()
+        If IsPostBack = False Then
+            xmlRead()
+            bindToGridView()
+        End If
+    End Sub
+
+    Protected Sub bindToGridView()
+        Dim dataUrl As String = pathToXml
+        Dim ds As DataSet = New DataSet
+        ds.ReadXml(dataUrl)
+        Dim dv As DataView = New DataView(ds.Tables(0))
+        Gridview1.DataSource = dv
+        Gridview1.DataBind()
     End Sub
 
     Public Sub xmlRead()
-        'Dim m_xmlr As XmlTextReader
-        'm_xmlr = New XmlTextReader("invoices.xml")
-        ''Disable whitespace so that you don't have to read overwhitespaces
-        'm_xmlr.WhitespaceHandling = WhitespaceHandling.None
-        'm_xmlr.Read() 'read the heaer
-        'm_xmlr.Read() 'read the first node 
-        'While Not m_xmlr.EOF
         Try
             Dim m_xmld As XmlDocument
             Dim m_nodelist As XmlNodeList
