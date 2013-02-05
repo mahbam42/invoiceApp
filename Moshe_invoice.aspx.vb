@@ -110,8 +110,9 @@ Partial Class invoice
 
     Protected Sub Gridview1_Sorting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSortEventArgs) Handles Gridview1.Sorting
         Dim sd As String = Session("sortdir")
-        Dim ds As DataSet = Session("dt")
-        Dim dv As DataView(ds.Tables(0))
+        Dim dt As DataTable = Session("dt")
+        Dim dv As New DataView
+        dv = dt.DefaultView
         If sd.IndexOf("ASC") > -1 Then
             Session("sortdir") = "DESC"
         Else
