@@ -11,6 +11,44 @@
     <div>
         <h1>Max Brother Invoices</h1>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br />
+        <asp:Panel ID="pnlUpdate" GroupingText="Add New Entry" runat="server">
+            <table>
+                <tr>
+                    <td>
+                        Client Name:<br />
+                        <asp:TextBox ID="txtClient" runat="server"></asp:TextBox></td>
+                    <td>
+                        Date:<br />
+                        <asp:TextBox ID="txtDate" Width="5em" MaxLength="10" runat="server"></asp:TextBox></td>
+                    <td>
+                        Gig/Event Name:<br />
+                        <asp:TextBox ID="txtDesc" runat="server"></asp:TextBox></td>
+                    <td>
+                        Budget Code:<br />
+                        <asp:DropDownList ID="ddlBudgetCode" runat="server">
+                        </asp:DropDownList></td>
+                    <td>
+                        Hours:<br />
+                        <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
+                    <td>
+                        Discount:<br />
+                        <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
+                    <td>
+                        Status:<br />
+                        <asp:DropDownList ID="ddlStatus" runat="server">
+                        </asp:DropDownList></td>
+                    <td>
+                        Details:<br />
+                        <asp:TextBox ID="txtDetails" runat="server"></asp:TextBox></td>
+                    <td>
+                        Client Contact:<br />
+                        <asp:TextBox ID="txtContact" runat="server"></asp:TextBox></td>
+                    <td style="vertical-align: bottom;">
+                        <asp:Button ID="btnAdd" runat="server" Text="Add" /></td>
+                </tr>
+            </table>
+        </asp:Panel>
+
         <asp:gridview ID="Gridview1" AllowSorting="True"  runat="server" 
             AutoGenerateColumns="False">
             <Columns>
@@ -21,6 +59,9 @@
                 <asp:BoundField DataField="ordernumber" SortExpression="ordernumber" HeaderText="Invoice #" />
                 <asp:BoundField DataField="hours" SortExpression="hours" HeaderText="Hours" />
                 <asp:BoundField DataField="discount" SortExpression="discount" HeaderText="Discount" />
+                <asp:BoundField DataField="total" SortExpression="total" HeaderText="Total" />
+                <asp:BoundField DataField="status" SortExpression="status" HeaderText="Status" />
+                <asp:BoundField DataField="paymentrec" SortExpression="paymentrec" HeaderText="Payment Received" />
                 <asp:BoundField DataField="details" SortExpression="details" HeaderText="Details" />
                 <asp:BoundField DataField="contact" SortExpression="contact" HeaderText="Contact Address" />
             </Columns>
@@ -28,10 +69,6 @@
     </div>
     <div>
         <asp:GridView ID="GridView2" AllowSorting="true" runat="server">
-            <Columns>
-                <asp:CommandField ShowEditButton="True" />
-                <asp:TemplateField SortExpression="Clients" HeaderText="Clients" />
-            </Columns>
         </asp:GridView>
     </div>
     </form>
