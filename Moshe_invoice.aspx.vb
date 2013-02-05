@@ -10,17 +10,28 @@ Partial Class invoice
     Inherits System.Web.UI.Page
 
     Public pathToXML As String = "invoices.xml"
+    Public budgetCodes As String = "budgetcodes.xml"
     Dim dt As New DataTable
     Dim dv As DataView
     Dim ds As DataSet
 
-    ''' PreInit is Moshe's code to set-up some things before the page load 
+    ' PreInit is Moshe's code to set-up some things before the page load 
     Protected Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
+        ' Reads invoices.xml and stores it to a dataTable accessable as a session variable 
         pathToXML = Server.MapPath(pathToXML)
         ds = New DataSet
         ds.ReadXml(pathToXML)
         dt = (ds.Tables(0)) 'create the data table 
-        Session("dt") = dt 'create a session variable based on the dataTable to then manipulate 
+        Session("dt") = dt 'create a session variable based on the dataTable to then manipulate
+
+        ' Reads budgetcodes.xml and stores it as a dataTable in a session variable "budget" 
+        budgetCodes = Server.MapPath(budgetCodes)
+        Dim dsBudget As New DataSet
+        dsBudget.ReadXml(budgetCodes)
+        Dim budgetDT As DataTable = dsBudget.Tables(0)
+        Session("budgetDT") = budgetDT
+
+        ' Initializes the sorting logic (there is a better way to do this)
         If Session("sortdir") Is Nothing Then 'Sets initial values for sorting - not the best way to do things... 
             Session("sortdir") = "ASC"
 
@@ -32,8 +43,29 @@ Partial Class invoice
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If IsPostBack = False Then
-            xmlRead()
+            'xmlRead()
             bindToGridView()
+
+            'Store budget codes to the second gridView
+            GridView2.DataSource = Session("budgetDT")
+            GridView2.DataBind()
+
+            ' Setting up the dropdown lists 
+            Dim status As New ArrayList
+            status.Add("Open")
+            status.Add("Submitted")
+            status.Add("Paid")
+            status.Add("Pending")
+            status.Add("Waived")
+            status.Add("Canceled")
+            ddlStatus.DataSource = status
+            ddlStatus.DataBind()
+
+            Dim codesTable As New DataTable
+            codesTable = Session("budgetDT")
+            ddlBudgetCode.DataSource = codesTable
+            ddlBudgetCode.DataTextField = "code"
+            ddlBudgetCode.DataBind()
         End If
     End Sub
 
@@ -91,7 +123,16 @@ Partial Class invoice
         ' Update the values
         Dim row = Gridview1.Rows(e.RowIndex)
         dt.Rows(row.DataItemIndex)("client") = (CType((row.Cells(1).Controls(0)), TextBox)).Text
-
+        dt.Rows(row.DataItemIndex)("date") = (CType((row.Cells(2).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("desc") = (CType((row.Cells(3).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("ordernumber") = (CType((row.Cells(4).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("hours") = (CType((row.Cells(5).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("discount") = (CType((row.Cells(6).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("total") = (CType((row.Cells(7).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("status") = (CType((row.Cells(8).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("paymentrec") = (CType((row.Cells(9).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("details") = (CType((row.Cells(10).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("contact") = (CType((row.Cells(11).Controls(0)), TextBox)).Text
         ' There will be 1 dt.rows line for each cell column in the data table
 
         ' Reset
@@ -123,4 +164,23 @@ Partial Class invoice
     End Sub
 
 
+    Protected Sub btnAdd_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+        Dim newRow As DataRow = ds.Tables(0).NewRow()
+        newRow("client") = txtClient.Text
+        newRow("date") = txtDate.Text
+        newRow("desc") = txtDesc.Text
+        newRow("ordernumber") = invoiceNumber(ddlBudgetCode.SelectedValue)
+        newRow("hours") = txtHours.Text
+        newRow("discount") = txtDiscount.Text
+        'newRow("total")
+        ds.Tables(0).Rows.Add(newRow)
+        Session("dt") = ds.Tables(0)
+        bindToGridView()
+    End Sub
+
+    Protected Function invoiceNumber(ByVal code As String) As String
+        Dim order As String = ddlBudgetCode.SelectedValue.ToString
+
+        invoiceNumber = order
+    End Function
 End Class
