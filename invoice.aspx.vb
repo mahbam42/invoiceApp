@@ -8,8 +8,7 @@ Imports System.Data
 
 Partial Class invoice
     Inherits System.Web.UI.Page
-
-    Public pathToXML As String = "C:\Users\Max\Dropbox\Freelance\invoiceApp\invoices.xml"
+    Public pathToXML As String = "C:\Users\Max\Documents\Websites\invoiceApp\invoices.xml"
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If IsPostBack = False Then
@@ -35,7 +34,7 @@ Partial Class invoice
             'Create the XML Document
             m_xmld = New XmlDocument()
             'Load the Xml file
-            m_xmld.Load("C:\Users\Max\Dropbox\Freelance\invoiceApp\invoices.xml")
+            m_xmld.Load(pathToXML)
             'Get the list of name nodes 
             m_nodelist = m_xmld.SelectNodes("/invoices/invoice")
             'Loop through the nodes
