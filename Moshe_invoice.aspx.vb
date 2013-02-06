@@ -172,15 +172,30 @@ Partial Class invoice
         newRow("ordernumber") = invoiceNumber(ddlBudgetCode.SelectedValue)
         newRow("hours") = txtHours.Text
         newRow("discount") = txtDiscount.Text
-        'newRow("total")
+      'newRow("total")
+      newRow("status") = ddlStatus.SelectedValue
+      newRow("details") = txtDetails.Text
+      newRow("contact") = txtContact.Text
+
+      'save it
         ds.Tables(0).Rows.Add(newRow)
         Session("dt") = ds.Tables(0)
         bindToGridView()
     End Sub
 
-    Protected Function invoiceNumber(ByVal code As String) As String
-        Dim order As String = ddlBudgetCode.SelectedValue.ToString
+   Protected Function invoiceNumber(ByVal code As String) As String
+      Dim order As String = ddlBudgetCode.SelectedValue
+      Dim dt = CType(Session("dt"), DataTable)
+      Dim row = Gridview1.Rows(0).Cells(4).ToString
+      Dim i As Integer = 0
+      For i = 0 To Gridview1.Rows.Count - 1
+         If ddlBudgetCode.SelectedValue = row Then
+            Label1.Text = "Taco!!"
+         Else
+            Label1.Text = "not taco"
+         End If
+      Next
 
-        invoiceNumber = order
-    End Function
+      invoiceNumber = order
+   End Function
 End Class
