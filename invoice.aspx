@@ -32,7 +32,7 @@
                         <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
                     <td>
                         Discount:<br />
-                        <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" runat="server"></asp:TextBox>%</td>
                     <td>
                         Status:<br />
                         <asp:DropDownList ID="ddlStatus" runat="server">
