@@ -179,23 +179,29 @@ Partial Class invoice
 
       'save it
         ds.Tables(0).Rows.Add(newRow)
-        Session("dt") = ds.Tables(0)
+      Session("dt") = ds.Tables(0)
+      'dt.WriteXml(pathToXML)
         bindToGridView()
     End Sub
 
    Protected Function invoiceNumber(ByVal code As String) As String
       Dim order As String = ddlBudgetCode.SelectedValue
       Dim dt = CType(Session("dt"), DataTable)
-      Dim row = Gridview1.Rows(0).Cells(4).ToString
+
       Dim i As Integer = 0
+      Dim c As Integer = 0 'c for count 
       For i = 0 To Gridview1.Rows.Count - 1
+         Dim row = Left(Gridview1.Rows(i).Cells(4).Text, 3)
          If ddlBudgetCode.SelectedValue = row Then
-            Label1.Text = "Taco!!"
+            c = c + 1
          Else
             Label1.Text = "not taco"
          End If
       Next
-
-      invoiceNumber = order
+      If c < 10 Then
+         invoiceNumber = order + "-0" + c.ToString 'adds a leading zero if less than 10 
+      Else
+         invoiceNumber = order + "-" + c.ToString
+      End If
    End Function
 End Class
