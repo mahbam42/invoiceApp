@@ -171,37 +171,54 @@ Partial Class invoice
         newRow("desc") = txtDesc.Text
         newRow("ordernumber") = invoiceNumber(ddlBudgetCode.SelectedValue)
         newRow("hours") = txtHours.Text
-        newRow("discount") = txtDiscount.Text
-      'newRow("total")
-      newRow("status") = ddlStatus.SelectedValue
-      newRow("details") = txtDetails.Text
-      newRow("contact") = txtContact.Text
+        newRow("discount") = txtDiscount.Text + "%"
+        newRow("total") = total()
+        newRow("status") = ddlStatus.SelectedValue
+        newRow("details") = txtDetails.Text
+        newRow("contact") = txtContact.Text
 
-      'save it
+        'save it
         ds.Tables(0).Rows.Add(newRow)
-      Session("dt") = ds.Tables(0)
-      'dt.WriteXml(pathToXML)
+        Session("dt") = ds.Tables(0)
+        dt.WriteXml(pathToXML)
         bindToGridView()
     End Sub
 
-   Protected Function invoiceNumber(ByVal code As String) As String
-      Dim order As String = ddlBudgetCode.SelectedValue
-      Dim dt = CType(Session("dt"), DataTable)
+    Protected Function total() As Integer
+        Dim rate As Decimal
+        Dim textrate As String
+        For i As Integer = 0 To GridView2.Rows.Count - 1
+            Dim row = GridView2.Rows(i).Cells(0).Text
+            If ddlBudgetCode.SelectedValue = row Then
+                textrate = GridView2.Rows(i).Cells(2).Text
+                Double.TryParse(textrate, rate)
+            End If
+        Next
+        Dim hours As Integer = CInt(txtHours.Text)
+        Dim discount As Decimal = CInt(txtDiscount.Text)
+        discount = discount / 100
 
-      Dim i As Integer = 0
-      Dim c As Integer = 0 'c for count 
-      For i = 0 To Gridview1.Rows.Count - 1
-         Dim row = Left(Gridview1.Rows(i).Cells(4).Text, 3)
-         If ddlBudgetCode.SelectedValue = row Then
-            c = c + 1
-         Else
-            Label1.Text = "not taco"
-         End If
-      Next
-      If c < 10 Then
-         invoiceNumber = order + "-0" + c.ToString 'adds a leading zero if less than 10 
-      Else
-         invoiceNumber = order + "-" + c.ToString
-      End If
-   End Function
+        total = ((hours * rate) - ((hours * rate) * discount))
+    End Function
+
+    Protected Function invoiceNumber(ByVal code As String) As String
+        Dim order As String = ddlBudgetCode.SelectedValue
+        Dim dt = CType(Session("dt"), DataTable)
+
+        Dim i As Integer = 0
+        Dim c As Integer = 0 'c for count 
+        For i = 0 To Gridview1.Rows.Count - 1
+            Dim row = Left(Gridview1.Rows(i).Cells(4).Text, 3)
+            If ddlBudgetCode.SelectedValue = row Then
+                c = c + 1
+            Else
+                Label1.Text = "not taco"
+            End If
+        Next
+        If c < 10 Then
+            invoiceNumber = order + "-0" + c.ToString 'adds a leading zero if less than 10 
+        Else
+            invoiceNumber = order + "-" + c.ToString
+        End If
+    End Function
 End Class
