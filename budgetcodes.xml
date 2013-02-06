@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BudgetCodes>
+  <BudgetCode>
+    <code>101</code>
+    <name>Lights</name>
+    <rate>29.90</rate>
+  </BudgetCode>
+  <BudgetCode>
+    <code>102</code>
+    <name>Sound</name>
+    <rate>29.90</rate>
+  </BudgetCode>
+  <BudgetCode>
+    <code>201</code>
+    <name>Web Design</name>
+    <rate>40.00</rate>
+  </BudgetCode>
+  <BudgetCode>
+    <code>301</code>
+    <name>Tech Support</name>
+    <rate>29.90</rate>
+  </BudgetCode>
+</BudgetCodes>
