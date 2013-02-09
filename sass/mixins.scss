@@ -1,0 +1,59 @@
+// rounded corners for the content box
+@mixin backgroundTexture($file, $fallBack) {
+    background:$fallBack url($file);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: top left;
+}
+
+@mixin corners($color, $top, $right, $bottom, $left, $width) {
+    border-radius: $top $right $bottom $left; // 5px 5px 0px 0px
+    -moz-border-radius:  $top $right $bottom $left; // 5px 5px 0px 0px
+    -webkit-border-radius: $top $right $bottom $left; // 5px 5px 0px 0px
+    border: $width solid $color;
+}
+
+@mixin divFix {
+    /* fix for box model */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@mixin marginFix {
+    /* Fix for webkit margins */
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+@mixin gradient($gStart, $gEnd, $length) {
+    background: mix($gStart, $gEnd); /* Old browsers */
+    background: -moz-linear-gradient(top,  $gStart 0%, $gEnd $length); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$gStart), color-stop($length,$gEnd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $gStart 0%,$gEnd $length); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $gStart 0%,$gEnd $length); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $gStart 0%,$gEnd $length); /* IE10+ */
+    background: linear-gradient(to bottom,  $gStart 0%,$gEnd $length); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$gStart', endColorstr='$gEnd',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin marginCenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+// Transparent background for RGX Consulting
+@mixin pageBG {
+    background: -moz-linear-gradient(top,  rgba(2,55,39,1) 1%, rgba(2,55,39,0.75) 20%, rgba(2,55,39,0) 45%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(2,55,39,1)), color-stop(20%,rgba(2,55,39,0.75)), color-stop(45%,rgba(2,55,39,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(2,55,39,1) 1%,rgba(2,55,39,0.75) 20%,rgba(2,55,39,0) 45%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(2,55,39,1) 1%,rgba(2,55,39,0.75) 20%,rgba(2,55,39,0) 45%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(2,55,39,1) 1%,rgba(2,55,39,0.75) 20%,rgba(2,55,39,0) 45%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(2,55,39,1) 1%,rgba(2,55,39,0.75) 20%,rgba(2,55,39,0) 45%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#023727', endColorstr='#00023727',GradientType=0 ); /* IE6-9 */
+
+    background-repeat: no-repeat;
+}
