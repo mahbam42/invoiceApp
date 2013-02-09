@@ -5,51 +5,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Invoice App</title>
+    <link rel="Stylesheet" href="style/960.css" />
+    <link rel="Stylesheet" href="style/main.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div class="container_12">
         <h1>Max Brother Invoices</h1>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br />
-        <asp:Panel ID="pnlUpdate" GroupingText="Add New Entry" runat="server">
-            <table>
+        <asp:Panel ID="pnlUpdate" CssClass="grid_10" GroupingText="Add New Entry" runat="server">
+            <table id="update">
                 <tr>
                     <td>
                         Client Name:<br />
                         <asp:TextBox ID="txtClient" runat="server"></asp:TextBox></td>
-                    <td>
-                        Date:<br />
-                        <asp:TextBox ID="txtDate" Width="5em" MaxLength="10" runat="server"></asp:TextBox></td>
+                    
                     <td>
                         Gig/Event Name:<br />
                         <asp:TextBox ID="txtDesc" runat="server"></asp:TextBox></td>
-                    <td>
-                        Budget Code:<br />
-                        <asp:DropDownList ID="ddlBudgetCode" runat="server">
-                        </asp:DropDownList></td>
-                    <td>
-                        Hours:<br />
-                        <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
-                    <td>
-                        Discount:<br />
-                        <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" runat="server"></asp:TextBox>%</td>
-                    <td>
-                        Status:<br />
-                        <asp:DropDownList ID="ddlStatus" runat="server">
-                        </asp:DropDownList></td>
-                    <td>
+                    <td colspan="2">
                         Details:<br />
                         <asp:TextBox ID="txtDetails" runat="server"></asp:TextBox></td>
                     <td>
                         Client Contact:<br />
-                        <asp:TextBox ID="txtContact" runat="server"></asp:TextBox></td>
-                    <td style="vertical-align: bottom;">
-                        <asp:Button ID="btnAdd" runat="server" Text="Add" /></td>
+                        <asp:TextBox ID="txtContact" TextMode="Email" runat="server"></asp:TextBox></td>
+                    <td rowspan="2"><!-- Buttons -->
+                        <asp:Button ID="btnAdd" runat="server" CssClass="add" Text="Add" /> 
+                        <asp:Button ID="btnClear" runat="server" CssClass="btnClear" Text="Clear" /><br />
+                        <asp:Button ID="btnSend" runat="server" Text="Invoice" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:TextBox ID="txtDate" TextMode="Date" runat="server"></asp:TextBox></td>
+                    <td>
+                        Budget Code:
+                        <asp:DropDownList ID="ddlBudgetCode" runat="server">
+                        </asp:DropDownList></td>
+                    <td>
+                        Hours:
+                        <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
+                    <td>
+                        Discount:
+                        <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" runat="server"></asp:TextBox>%</td>
+                    <td>
+                        Status:
+                        <asp:DropDownList ID="ddlStatus" runat="server">
+                        </asp:DropDownList></td>
                 </tr>
             </table>
         </asp:Panel>
+        <div class="grid_2 omega">
+            <asp:GridView ID="GridView2" AllowSorting="true" runat="server">
+            </asp:GridView>
+        </div>
 
-        <asp:gridview ID="Gridview1" AllowSorting="True"  runat="server" 
+        <asp:gridview ID="Gridview1" CssClass="grid_12" AllowSorting="True"  runat="server" 
             AutoGenerateColumns="False">
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
@@ -72,10 +82,7 @@
             </Columns>
         </asp:gridview>
     </div>
-    <div>
-        <asp:GridView ID="GridView2" AllowSorting="true" runat="server">
-        </asp:GridView>
-    </div>
+    
     </form>
 </body>
 </html>
