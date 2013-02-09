@@ -1,0 +1,14 @@
+input[type=text], input[type=email], textarea {
+  width: 95%; }
+
+.button {
+  width: 45%; }
+  .button .add {
+    background-color: #00ff00;
+    float: left; }
+  .button .btnClear {
+    background-color: #ff0000;
+    float: right; }
+
+#update td {
+  vertical-align: top; }

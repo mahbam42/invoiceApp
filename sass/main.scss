@@ -1,0 +1,27 @@
+input[type=text], input[type=email], textarea {
+    width: 95%; //150px; 
+//    overflow: auto;
+}
+//input[type=date] {
+//    width: auto;
+//}
+    
+.button {
+    width: 45%;
+    .add { 
+        background-color: #00ff00;
+        float: left;
+    }
+    .btnClear {
+        background-color: #ff0000;
+        float: right;
+    }
+}
+#update {
+// #update is attached to the table
+    td {
+        vertical-align: top;
+    }
+
+}
+            
