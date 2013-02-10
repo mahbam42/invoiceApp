@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Not This one!! -->
+<xs:schema id="taco"
+    targetNamespace="localhost/invoice.xsd"
+    elementFormDefault="qualified"
+    xmlns="localhost/invoice.xsd"
+    xmlns:mstns="localhost/invoice.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="invoices">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element name="invoice">
+          <xs:complexType mixed="true">
+            <xs:sequence>
+              <xs:element name="client" type="xs:string" />
+              <xs:element name="date" type="xs:date" />
+              <xs:element name="desc" type="xs:string" />
+              <xs:element name="ordernumber" type="xs:string" />
+              <xs:element name="hours" type="xs:decimal" />
+              <xs:element name="discount" type="xs:decimal" />
+              <xs:element name="total" type="xs:decimal" />
+              <xs:element name="status" type="xs:string" />
+              <xs:element name="paymentrec" type="xs:date" />
+              <xs:element name="details" type="xs:string" />
+              <xs:element name="contact" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
