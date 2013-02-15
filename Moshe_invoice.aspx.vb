@@ -131,12 +131,16 @@ Partial Class invoice
         dt.Rows(row.DataItemIndex)("discount") = (CType((row.Cells(6).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("total") = (CType((row.Cells(7).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("status") = (CType((row.Cells(8).Controls(0)), TextBox)).Text
-        'dt.Rows(row.DataItemIndex)("paymentrec") = DateCheck()
-        If Date.TryParse((CType((row.Cells(9).Controls(0)), TextBox)).Text, dt.Rows(row.DataItemIndex)("paymentrec")) = True Then
-            dt.Rows(row.DataItemIndex)("paymentrec") = Date.Parse((CType((row.Cells(9).Controls(0)), TextBox)).Text).ToShortDateString()
-        Else
-            dt.Rows(row.DataItemIndex)("paymentrec") = "n/a"
-        End If
+        dt.Rows(row.DataItemIndex)("paymentrec") = (CType((row.Cells(9).Controls(0)), TextBox)).Text
+        ''If dt.Rows(row.DataItemIndex)("paymentrec")).Text = "n/a" then 
+        ''Else
+        ''    If Date.TryParse((CType((row.Cells(9).Controls(0)), TextBox)).Text, dt.Rows(row.DataItemIndex)("paymentrec")) = True Then
+        ''        dt.Rows(row.DataItemIndex)("paymentrec") = Date.Parse((CType((row.Cells(9).Controls(0)), TextBox)).Text).ToShortDateString()
+        ''    Else
+        ''        dt.Rows(row.DataItemIndex)("paymentrec") = "n/a"
+        ''    End If
+        ''End If
+
         dt.Rows(row.DataItemIndex)("details") = (CType((row.Cells(10).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("contact") = (CType((row.Cells(11).Controls(0)), TextBox)).Text
         ' There will be 1 dt.rows line for each cell column in the data table
