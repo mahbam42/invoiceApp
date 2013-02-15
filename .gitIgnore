@@ -1,3 +1,4 @@
 *.xml
 invoices.xml.txt
 sourceCode/*
+.sass-cache/

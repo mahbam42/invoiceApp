@@ -126,6 +126,7 @@ Partial Class invoice
     End Sub
 
     Protected Sub Gridview1_RowCancelingEdit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles Gridview1.RowCancelingEdit
+        Label1.Text = "Editing Cancelled"
         Gridview1.EditIndex = -1
     End Sub
 
@@ -142,7 +143,12 @@ Partial Class invoice
         dt.Rows(row.DataItemIndex)("discount") = (CType((row.Cells(6).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("total") = (CType((row.Cells(7).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("status") = (CType((row.Cells(8).Controls(0)), TextBox)).Text
-        dt.Rows(row.DataItemIndex)("paymentrec") = (CType((row.Cells(9).Controls(0)), TextBox)).Text
+        'dt.Rows(row.DataItemIndex)("paymentrec") = DateCheck()
+        If Date.TryParse((CType((row.Cells(9).Controls(0)), TextBox)).Text, dt.Rows(row.DataItemIndex)("paymentrec")) = True Then
+            dt.Rows(row.DataItemIndex)("paymentrec") = Date.Parse((CType((row.Cells(9).Controls(0)), TextBox)).Text).ToShortDateString()
+        Else
+            dt.Rows(row.DataItemIndex)("paymentrec") = "n/a"
+        End If
         dt.Rows(row.DataItemIndex)("details") = (CType((row.Cells(10).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("contact") = (CType((row.Cells(11).Controls(0)), TextBox)).Text
         ' There will be 1 dt.rows line for each cell column in the data table
@@ -179,11 +185,12 @@ Partial Class invoice
     Protected Sub btnAdd_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         Dim newRow As DataRow = ds.Tables(0).NewRow()
         newRow("client") = txtClient.Text
-        newRow("date") = txtDate.Text
+        newRow("date") = Date.Parse(txtDate.Text).ToShortDateString
         newRow("desc") = txtDesc.Text
         newRow("ordernumber") = invoiceNumber(ddlBudgetCode.SelectedValue)
         newRow("hours") = txtHours.Text
         newRow("discount") = txtDiscount.Text + "%"
+
         newRow("total") = total()
         newRow("status") = ddlStatus.SelectedValue
         newRow("details") = txtDetails.Text
@@ -196,7 +203,9 @@ Partial Class invoice
         bindToGridView()
     End Sub
 
-    Protected Function total() As Integer
+    Protected Function total() As Decimal
+        ' Calculate the total 
+        ' based on hours * rate (from xml) - percent discount 
         Dim rate As Decimal
         Dim textrate As String
         For i As Integer = 0 To GridView2.Rows.Count - 1
@@ -208,15 +217,21 @@ Partial Class invoice
         Next
         Dim hours As Integer = CInt(txtHours.Text)
         Dim discount As Decimal = CInt(txtDiscount.Text)
+        'If discount = 100 Then
+        '    'Math will break without this. Other
+        '    discount = 1
+        'Else
+        '    discount = discount
+        'End If
         discount = discount / 100
 
         total = ((hours * rate) - ((hours * rate) * discount))
     End Function
 
     Protected Function invoiceNumber(ByVal code As String) As String
+        ' Generate the invoice numbers 
         Dim order As String = ddlBudgetCode.SelectedValue
         Dim dt = CType(Session("dt"), DataTable)
-
         Dim i As Integer = 0
         Dim c As Integer = 0 'c for count 
         For i = 0 To Gridview1.Rows.Count - 1
