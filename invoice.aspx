@@ -59,25 +59,29 @@
             </asp:GridView>
         </div>
 
-        <asp:gridview ID="Gridview1" CssClass="grid_12" AllowSorting="True"  runat="server" 
-            AutoGenerateColumns="False">
+        <asp:GridView ID="Gridview1" AllowSorting="True" runat="server" AutoGenerateColumns="false">
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="client" SortExpression="client" HeaderText="Client Name" />
-                <asp:BoundField DataField="date" SortExpression="date" HeaderText="Date" />
+                <asp:BoundField DataField="date" HtmlEncode="false" HtmlEncodeFormatString="false"
+                    DataFormatString="{0:d}" SortExpression="date" HeaderText="Date" />
                 <asp:BoundField DataField="desc" SortExpression="desc" HeaderText="Description" />
                 <asp:BoundField DataField="ordernumber" SortExpression="ordernumber" HeaderText="Invoice #" />
-                <asp:BoundField DataField="hours" SortExpression="hours" HeaderText="Hours"  />
+                <asp:BoundField DataField="hours" SortExpression="hours" DataFormatString="{0:n}"
+                    HtmlEncodeFormatString="false" HtmlEncode="false" HeaderText="Hours" />
+                <asp:BoundField DataField="discount" SortExpression="discount" DataFormatString="{0:n}"
+                    HtmlEncodeFormatString="false" HtmlEncode="false" HeaderText="Discount" />
                 <asp:BoundField DataField="discount" SortExpression="discount" HeaderText="Discount" />
-                <asp:BoundField DataField="total" SortExpression="total" HeaderText="Total" DataFormatString="{0:c}" />
+                <asp:BoundField DataField="total" SortExpression="total" DataFormatString="{0:c}"
+                    HtmlEncodeFormatString="false" HtmlEncode="false" HeaderText="Total" />
                 <asp:BoundField DataField="status" SortExpression="status" HeaderText="Status" />
-                <asp:BoundField DataField="paymentrec" SortExpression="paymentrec" HeaderText="Payment Received" />
+                <asp:BoundField DataField="paymentrec" HtmlEncode="false" HtmlEncodeFormatString="false"
+                    DataFormatString="{0:d}" SortExpression="paymentrec" HeaderText="Payment Received" />
                 <asp:BoundField DataField="details" SortExpression="details" HeaderText="Details" />
                 <asp:BoundField DataField="contact" SortExpression="contact" HeaderText="Contact Address" />
             </Columns>
-        </asp:gridview>
+        </asp:GridView>
     </div>
-    
     </form>
 </body>
 </html>
