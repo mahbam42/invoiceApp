@@ -43,10 +43,10 @@
                         </asp:DropDownList></td>
                     <td>
                         Hours:
-                        <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" Text="0" runat="server"></asp:TextBox></td>
                     <td>
                         Discount:
-                        <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" runat="server"></asp:TextBox>%</td>
+                        <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" Text="0" runat="server"></asp:TextBox>%</td>
                     <td>
                         Status:
                         <asp:DropDownList ID="ddlStatus" runat="server">
