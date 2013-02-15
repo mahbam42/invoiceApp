@@ -54,10 +54,10 @@
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="client" SortExpression="client" HeaderText="Client Name" />
-                <asp:BoundField DataField="date" SortExpression="date" HeaderText="Date" />
+                <asp:BoundField DataField="date" HtmlEncode="false" HtmlEncodeFormatString="false" DataFormatString="{0:d}" SortExpression="date" HeaderText="Date" />
                 <asp:BoundField DataField="desc" SortExpression="desc" HeaderText="Description" />
                 <asp:BoundField DataField="ordernumber" SortExpression="ordernumber" HeaderText="Invoice #" />
-                <asp:BoundField DataField="hours" SortExpression="hours" HeaderText="Hours" />
+                <asp:BoundField DataField="hours" SortExpression="hours" DataFormatString="{0:n}" HtmlEncodeFormatString="false" HtmlEncode="false" HeaderText="Hours" />
                 <asp:BoundField DataField="discount" SortExpression="discount" HeaderText="Discount" />
                 <asp:BoundField DataField="total" SortExpression="total" HeaderText="Total" />
                 <asp:BoundField DataField="status" SortExpression="status" HeaderText="Status" />
@@ -71,6 +71,7 @@
         <asp:GridView ID="GridView2" AllowSorting="true" runat="server">
         </asp:GridView>
     </div>
+
     </form>
 </body>
 </html>
