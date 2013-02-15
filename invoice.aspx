@@ -59,22 +59,19 @@
             </asp:GridView>
         </div>
 
-        <asp:gridview ID="Gridview1" CssClass="grid_12" AllowSorting="True"  runat="server" 
-            AutoGenerateColumns="False">
+        <asp:gridview ID="Gridview1"  AllowSorting="True"  runat="server" 
+            AutoGenerateColumns="false">
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="client" SortExpression="client" HeaderText="Client Name" />
                 <asp:BoundField DataField="date" HtmlEncode="false" HtmlEncodeFormatString="false" DataFormatString="{0:d}" SortExpression="date" HeaderText="Date" />
                 <asp:BoundField DataField="desc" SortExpression="desc" HeaderText="Description" />
                 <asp:BoundField DataField="ordernumber" SortExpression="ordernumber" HeaderText="Invoice #" />
-<<<<<<< HEAD
                 <asp:BoundField DataField="hours" SortExpression="hours" DataFormatString="{0:n}" HtmlEncodeFormatString="false" HtmlEncode="false" HeaderText="Hours" />
                 <asp:BoundField DataField="discount" SortExpression="discount" HeaderText="Discount" />
-=======
                 <asp:BoundField DataField="hours" SortExpression="hours" HeaderText="Hours" />
                 <asp:BoundField DataField="discount" SortExpression="discount" 
                     HeaderText="Discount" />
->>>>>>> 179cd1910cece816f6e03877e465655146c739f4
                 <asp:BoundField DataField="total" SortExpression="total" HeaderText="Total" />
                 <asp:BoundField DataField="status" SortExpression="status" HeaderText="Status" />
                 <asp:BoundField DataField="paymentrec" SortExpression="paymentrec" 
@@ -84,15 +81,6 @@
             </Columns>
         </asp:gridview>
     </div>
-<<<<<<< HEAD
-    <div>
-        <asp:GridView ID="GridView2" AllowSorting="true" runat="server">
-        </asp:GridView>
-    </div>
-
-=======
-    
->>>>>>> 179cd1910cece816f6e03877e465655146c739f4
     </form>
 </body>
 </html>

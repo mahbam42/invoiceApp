@@ -21,19 +21,24 @@ Partial Class invoice
         pathToXML = Server.MapPath(pathToXML)
         ds = New DataSet
         ds.ReadXml(pathToXML)
-        dt.Columns.Add("clients").DataType = GetType(String)
+        dt.Columns.Add("client").DataType = GetType(String)
         dt.Columns.Add("Date").DataType = GetType(Date)
-        dt.Columns.Add("Description").DataType = GetType(String)
-        dt.Columns.Add("Invoice #").DataType = GetType(String)
+        dt.Columns.Add("desc").DataType = GetType(String)
+        dt.Columns.Add("ordernumber").DataType = GetType(String)
         dt.Columns.Add("Hours").DataType = GetType(Decimal)
         dt.Columns.Add("Discount").DataType = GetType(Decimal)
         dt.Columns.Add("Total").DataType = GetType(Decimal)
         dt.Columns.Add("Status").DataType = GetType(String)
-        dt.Columns.Add("Payment Received").DataType = GetType(Date)
+        dt.Columns.Add("PaymentRec").DataType = GetType(String)
         dt.Columns.Add("Details").DataType = GetType(String)
         dt.Columns.Add("Contact").DataType = GetType(String)
 
-        dt = (ds.Tables(0)) 'create the data table 
+        'dt = (ds.Tables(0)) 'create the data table 
+        Dim dr As DataRow
+        For i As Integer = 1 To ds.Tables(0).Rows.Count - 1
+            dr = ds.Tables(0).Rows(i)
+            dt.ImportRow(dr)
+        Next
         Session("dt") = dt 'create a session variable based on the dataTable to then manipulate
 
         ' Reads budgetcodes.xml and stores it as a dataTable in a session variable "budget" 
