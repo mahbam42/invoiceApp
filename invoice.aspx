@@ -60,7 +60,10 @@
         </div>
 
         <asp:gridview ID="Gridview1" CssClass="grid_12" AllowSorting="True"  runat="server" 
-            AutoGenerateColumns="False">
+            AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" 
+            BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" 
+            GridLines="None">
+            <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="client" SortExpression="client" HeaderText="Client Name" />
@@ -75,6 +78,15 @@
                 <asp:BoundField DataField="details" SortExpression="details" HeaderText="Details" />
                 <asp:BoundField DataField="contact" SortExpression="contact" HeaderText="Contact Address" />
             </Columns>
+            <FooterStyle BackColor="Tan" />
+            <HeaderStyle BackColor="Tan" Font-Bold="True" />
+            <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
+                HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+            <SortedAscendingCellStyle BackColor="#FAFAE7" />
+            <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+            <SortedDescendingCellStyle BackColor="#E1DB9C" />
+            <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:gridview>
     </div>
     
