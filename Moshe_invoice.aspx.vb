@@ -21,6 +21,7 @@ Partial Class invoice
         pathToXML = Server.MapPath(pathToXML)
         ds = New DataSet
         ds.ReadXml(pathToXML)
+        ' set types for the the columns in the dataTable
         dt.Columns.Add("client").DataType = GetType(String)
         dt.Columns.Add("Date").DataType = GetType(Date)
         dt.Columns.Add("desc").DataType = GetType(String)
@@ -33,11 +34,11 @@ Partial Class invoice
         dt.Columns.Add("Details").DataType = GetType(String)
         dt.Columns.Add("Contact").DataType = GetType(String)
 
-        'dt = (ds.Tables(0)) 'create the data table 
+        ' Reads the data set row by row and adds it to the dataTable
         Dim dr As DataRow
-        For i As Integer = 1 To ds.Tables(0).Rows.Count - 1
+        For i As Integer = 1 To ds.Tables(0).Rows.Count - 1 ' Loops through each row
             dr = ds.Tables(0).Rows(i)
-            dt.ImportRow(dr)
+            dt.ImportRow(dr) ' you cannot copy rows from a table to another one 
         Next
         Session("dt") = dt 'create a session variable based on the dataTable to then manipulate
 
@@ -62,7 +63,6 @@ Partial Class invoice
         If IsPostBack = False Then
             'xmlRead()
             bindToGridView()
-
             'Store budget codes to the second gridView
             GridView2.DataSource = Session("budgetDT")
             GridView2.DataBind()
