@@ -1,14 +1,53 @@
-input[type=text], input[type=email], textarea {
-  width: 95%; }
+@import url(http://fonts.googleapis.com/css?family=Bitter|Josefin+Slab:600);
+input[type=text], input[type=email], input[type=date], textarea {
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border: 1px solid #4e5c66;
+  width: 95%;
+  background-color: #E9D6BE;
+  color: #204059; }
 
 .button {
   width: 45%; }
-  .button .add {
+  .button .btnAdd {
     background-color: #00ff00;
     float: left; }
   .button .btnClear {
     background-color: #ff0000;
     float: right; }
+  .button .btnInvoice {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%; }
+
+fieldset {
+  background: #e9d0ae url("../images/ ");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: top left; }
+  fieldset legend {
+    font-family: "Josefin Slab", serif; }
 
 #update td {
   vertical-align: top; }
+
+#gridviewContainer {
+  width: 100%; }
+  #gridviewContainer .gridview1 {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto; }
+    #gridviewContainer .gridview1 td {
+      vertical-align: top;
+      padding: 2px; }
+
+body {
+  background: #9f8e77 url("../images/escheresque.png");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: top left;
+  color: #204059;
+  font-family: "Bitter", serif; }
+  body h1 {
+    font-family: "Josefin Slab", serif; }
