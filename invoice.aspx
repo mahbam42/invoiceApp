@@ -36,16 +36,17 @@
                 </tr>
                 <tr>
                     <td>
+                        Date:<br />
                         <asp:TextBox ID="txtDate" TextMode="Date" runat="server"></asp:TextBox></td>
                     <td>
-                        Budget Code:
+                        Budget Code:<br />
                         <asp:DropDownList ID="ddlBudgetCode" runat="server">
                         </asp:DropDownList></td>
                     <td>
-                        Hours:
+                        Hours:<br />
                         <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
                     <td>
-                        Discount:
+                        Discount:<br />
                         <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" runat="server"></asp:TextBox>%</td>
                     <td>
                         Status:
