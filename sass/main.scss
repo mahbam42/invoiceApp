@@ -40,17 +40,23 @@ fieldset {
 
 }
 
-#gridviewContainer {
-    width: 100%;
-    .gridview1 {
-        width: 1000px;
-	@include marginCenter;
-	td {
-	    vertical-align: top;
-	    padding: 2px;
-	}
+
+.gridview1 {
+    width: 1000px;
+    @include marginCenter;
+    td {
+        vertical-align: top;
+        padding: 2px;
     }
 }
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}ma
 
 body {
     @include backgroundTexture('../images/escheresque.png', #9f8e77);

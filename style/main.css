@@ -32,16 +32,21 @@ fieldset {
 #update td {
   vertical-align: top; }
 
-#gridviewContainer {
-  width: 100%; }
-  #gridviewContainer .gridview1 {
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto; }
-    #gridviewContainer .gridview1 td {
-      vertical-align: top;
-      padding: 2px; }
+.gridview1 {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto; }
+  .gridview1 td {
+    vertical-align: top;
+    padding: 2px; }
 
+.right {
+  text-align: right; }
+
+.left {
+  text-align: left; }
+
+ma
 body {
   background: #9f8e77 url("../images/escheresque.png");
   background-repeat: repeat;
@@ -49,5 +54,6 @@ body {
   background-position: top left;
   color: #204059;
   font-family: "Bitter", serif; }
+  ma
   body h1 {
     font-family: "Josefin Slab", serif; }
