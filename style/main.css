@@ -46,7 +46,6 @@ fieldset {
 .left {
   text-align: left; }
 
-ma
 body {
   background: #9f8e77 url("../images/escheresque.png");
   background-repeat: repeat;
@@ -54,6 +53,5 @@ body {
   background-position: top left;
   color: #204059;
   font-family: "Bitter", serif; }
-  ma
   body h1 {
     font-family: "Josefin Slab", serif; }
