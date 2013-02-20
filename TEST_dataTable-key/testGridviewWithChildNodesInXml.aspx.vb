@@ -11,50 +11,46 @@ Partial Class tests_testGridviewWithChildNodesInXml
 
     Public pathToXML As String = "test.xml"
     ' sPublic childGV As New GridView
-    Public dt2 As DataTable 'should hold the line items 
+    Public ds As DataSet 'grab the dataset from anywhere! 
+    Public dt2 As New DataTable 'should hold the line items 
 
-   Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-      Label1.Text = ""
-      Dim dt As New DataTable
-      'Dim dv As DataView
-      Dim ds As DataSet
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Label1.Text = ""
+        Dim dt As New DataTable
+        'Dim dv As DataView
 
-      ' Reads invoices.xml and stores it to a dataTable accessable as a session variable 
-      pathToXML = Server.MapPath(pathToXML)
-      ds = New DataSet
-      ds.ReadXml(pathToXML)
-      Dim custOrderRel As DataRelation = ds.Relations.Add("lineItems", _
-         ds.Tables(0).Columns("test_Id"), _
-         ds.Tables(2).Columns("lines_Id"))
-      Dim testDR As DataRow
-      Dim lineDR As DataRow
+        ' Reads invoices.xml and stores it to a dataTable accessable as a session variable 
+        pathToXML = Server.MapPath(pathToXML)
+        ds = New DataSet
+        ds.ReadXml(pathToXML)
+        dt2.Columns.Add("line_Text")
+        Dim custOrderRel As DataRelation = ds.Relations.Add("lineItems", _
+           ds.Tables(0).Columns("test_Id"), _
+           ds.Tables(2).Columns("lines_Id"))
+        Dim testDR As DataRow
+        Dim lineDR As DataRow
+        For Each testDR In ds.Tables(0).Rows
+            'Label1.Text += testDR(0) + "<br />"
+            For Each lineDR In testDR.GetChildRows("lineItems")
+                'If lineDR.Item(1) = testDR.Item(2) Then
+                Label1.Text += lineDR(0) + "<br />"
+                dt2.ImportRow(lineDR)
+                'End If
+            Next
+        Next
 
-      Dim i As String = 0 'counter
-
-      For Each testDR In ds.Tables(0).Rows
-         'Label1.Text += testDR(0) + "<br />"
-         For Each lineDR In testDR.GetChildRows("lineItems") 'testDR.GetChildRows("lines_line") 'testDR.GetChildRows("test_lines") '
-            Label1.Text += i.ToString + lineDR(0) + "<br />"
-            i += 1
-         Next
-      Next
-
-      dt = ds.Tables(0)
-      dt2 = ds.Tables(2)
-      ' Well it didn't not work... but it still didn't work as intended 
-      'Dim uc As UniqueConstraint = New UniqueConstraint(New DataColumn() _
-      '   {dt2.Columns("line_Text")})
-      'dt2.Constraints.Add(uc)
+        dt = ds.Tables(0)
+        'dt2 = ds.Tables(2)
+        ' Well it didn't not work... but it still didn't work as intended 
+        'Dim uc As UniqueConstraint = New UniqueConstraint(New DataColumn() _
+        '   {dt2.Columns("line_Text")})
+        'dt2.Constraints.Add(uc)
 
 
-      Session("dt2") = dt2
-      GridView1.DataSource = dt
-      GridView1.DataBind()
-      'xmlRead()
-   End Sub
-
-    Protected Sub OnRowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs)
-
+        'Session("dt2") = dt2
+        GridView1.DataSource = dt
+        GridView1.DataBind()
+        'xmlRead()
     End Sub
 
     'Public Sub xmlRead()
@@ -125,12 +121,14 @@ Partial Class tests_testGridviewWithChildNodesInXml
    ''End Sub
 
    Protected Sub GridView1_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles GridView1.RowDataBound
-      If e.Row.RowType = DataControlRowType.DataRow Then
-         Dim gvOrders As GridView = e.Row.Cells(2).Controls(1) '.FindControl("GridiVew2")
+        'Dim dt2 As New DataTable
+        'dt2.Columns.Add("line_Text")
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim gvOrders As GridView = e.Row.Cells(2).Controls(1) '.FindControl("GridiVew2")
 
-         gvOrders.DataSource = dt2
-         gvOrders.DataBind()
-      End If
+            gvOrders.DataSource = dt2
+            gvOrders.DataBind()
+        End If
       
    End Sub
 End Class
