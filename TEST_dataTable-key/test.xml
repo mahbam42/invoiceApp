@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tests>
+  <test>
+    <name>Test 1</name>
+    <description>See how child nodes are rendered in a gridview</description>
+    <lines>
+      <line>Line 1</line>
+      <line>Line 2</line>
+    </lines> 
+  </test>
+  <test>
+    <name>Test 2</name>
+    <description>See how child nodes are rendered in a gridview</description>
+    <lines>
+      <line>Test 2 Line 1</line>
+      <line>Test 2 Line 2</line>
+    </lines>
+  </test>
+  <test>
+    <name>Test 3</name>
+    <description>See how child nodes are rendered in a gridview</description>
+  </test>
+</tests>
