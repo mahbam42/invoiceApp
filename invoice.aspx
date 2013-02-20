@@ -43,19 +43,11 @@
                         <asp:DropDownList ID="ddlBudgetCode" runat="server">
                         </asp:DropDownList></td>
                     <td>
-<<<<<<< HEAD
-                        Hours:
-                        <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" Text="0" runat="server"></asp:TextBox></td>
-                    <td>
-                        Discount:
-                        <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" Text="0" runat="server"></asp:TextBox>%</td>
-=======
                         Hours:<br />
                         <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
                     <td>
                         Discount:<br />
                         <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" runat="server"></asp:TextBox>%</td>
->>>>>>> stylin
                     <td>
                         Status:
                         <asp:DropDownList ID="ddlStatus" runat="server">
@@ -67,32 +59,6 @@
             <asp:GridView ID="GridView2" runat="server">
             </asp:GridView>
         </div>
-<<<<<<< HEAD
-
-        <asp:GridView ID="Gridview1" AllowSorting="True" runat="server" AutoGenerateColumns="false">
-            <Columns>
-                <asp:CommandField ShowEditButton="True" />
-                <asp:BoundField DataField="client" SortExpression="client" HeaderText="Client Name" />
-                <asp:BoundField DataField="date" HtmlEncode="false" HtmlEncodeFormatString="false"
-                    DataFormatString="{0:d}" SortExpression="date" HeaderText="Date" />
-                <asp:BoundField DataField="desc" SortExpression="desc" HeaderText="Description" />
-                <asp:BoundField DataField="ordernumber" SortExpression="ordernumber" HeaderText="Invoice #" />
-                <asp:BoundField DataField="hours" SortExpression="hours" DataFormatString="{0:n}"
-                    HtmlEncodeFormatString="false" HtmlEncode="false" HeaderText="Hours" />
-                <asp:BoundField DataField="discount" SortExpression="discount" DataFormatString="{0:n}"
-                    HtmlEncodeFormatString="false" HtmlEncode="false" HeaderText="Discount" />
-                <asp:BoundField DataField="discount" SortExpression="discount" HeaderText="Discount" />
-                <asp:BoundField DataField="total" SortExpression="total" DataFormatString="{0:c}"
-                    HtmlEncodeFormatString="false" HtmlEncode="false" HeaderText="Total" />
-                <asp:BoundField DataField="status" SortExpression="status" HeaderText="Status" />
-                <asp:BoundField DataField="paymentrec" HtmlEncode="false" HtmlEncodeFormatString="false"
-                    DataFormatString="{0:d}" SortExpression="paymentrec" HeaderText="Payment Received" />
-                <asp:BoundField DataField="details" SortExpression="details" HeaderText="Details" />
-                <asp:BoundField DataField="contact" SortExpression="contact" HeaderText="Contact Address" />
-            </Columns>
-        </asp:GridView>
-    </div>
-=======
     </div>
         <asp:gridview ID="Gridview1" CssClass="gridview1" AllowSorting="True"  runat="server" 
             AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" 
@@ -102,14 +68,14 @@
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="client" ItemStyle-CssClass="left" SortExpression="client" HeaderText="Client Name" />
-                <asp:BoundField DataField="date" ItemStyle-CssClass="left" SortExpression="date" HeaderText="Date" />
+                <asp:BoundField DataField="date" ItemStyle-CssClass="left" SortExpression="date" DataFormatString="{0:d}" HeaderText="Date" />
                 <asp:BoundField DataField="desc" ItemStyle-CssClass="left" SortExpression="desc" HeaderText="Description" />
                 <asp:BoundField DataField="ordernumber" ItemStyle-CssClass="left"  SortExpression="ordernumber" HeaderText="Invoice #" />
-                <asp:BoundField DataField="hours" ItemStyle-CssClass="right" SortExpression="hours" HeaderText="Hours"  />
-                <asp:BoundField DataField="discount" ItemStyle-CssClass="right" SortExpression="discount" HeaderText="Discount" />
-                <asp:BoundField DataField="total" ItemStyle-CssClass="right" SortExpression="total" HeaderText="Total" DataFormatString="{0:c}" />
+                <asp:BoundField DataField="hours" ItemStyle-CssClass="right" SortExpression="hours" DataFormatString="{0:n}" HeaderText="Hours"  />
+                <asp:BoundField DataField="discount" ItemStyle-CssClass="right" SortExpression="discount" DataFormatString="{0:n0}" HeaderText="Discount" />
+                <asp:BoundField DataField="total" ItemStyle-CssClass="right" SortExpression="total" DataFormatString="{0:c}" HeaderText="Total"/>
                 <asp:BoundField DataField="status" ItemStyle-CssClass="left" SortExpression="status" HeaderText="Status" />
-                <asp:BoundField DataField="paymentrec" ItemStyle-CssClass="left" SortExpression="paymentrec" HeaderText="Payment Received" />
+                <asp:BoundField DataField="paymentrec" ItemStyle-CssClass="left" SortExpression="paymentrec" DataFormatString="{0:d}" ConvertEmptyStringToNull="true"  HeaderText="Payment Received" />
                 <asp:BoundField DataField="details" ItemStyle-CssClass="left" SortExpression="details" HeaderText="Details" />
                 <asp:BoundField DataField="contact" ItemStyle-CssClass="left" SortExpression="contact" HeaderText="Contact Address" />
             </Columns>
@@ -123,8 +89,6 @@
             <SortedDescendingCellStyle BackColor="#E1DB9C" />
             <SortedDescendingHeaderStyle BackColor="#C2A47B" />
         </asp:gridview>
-    
->>>>>>> stylin
     </form>
 </body>
 </html>
