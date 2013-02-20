@@ -22,6 +22,7 @@ Partial Class invoice
         ds = New DataSet
         ds.ReadXml(pathToXML)
         ' set types for the the columns in the dataTable
+        dt.TableName = "Invoices"
         dt.Columns.Add("client").DataType = GetType(String)
         dt.Columns.Add("Date").DataType = GetType(Date)
         dt.Columns.Add("desc").DataType = GetType(String)
@@ -131,8 +132,17 @@ Partial Class invoice
     End Sub
 
     Protected Sub Gridview1_RowCancelingEdit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles Gridview1.RowCancelingEdit
-        Label1.Text = "Editing Cancelled"
-        Gridview1.EditIndex = -1
+
+        ' Retrieve the row that raised the event from the Rows
+        ' collection of the GridView control.
+        Dim row As GridViewRow = Gridview1.Rows(e.RowIndex)
+
+        ' The update operation was canceled. Display the 
+        ' primary key of the row. In this example, the primary
+        ' key is displayed in the second column of the GridView
+        ' control. To access the text of the column, use the Cells
+        ' collection of the row.
+        Label1.Text = "Update for item " & row.Cells(2).Text & " Canceled."
     End Sub
 
     Protected Sub Gridview1_RowUpdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles Gridview1.RowUpdating
@@ -146,27 +156,33 @@ Partial Class invoice
         dt.Rows(row.DataItemIndex)("ordernumber") = (CType((row.Cells(4).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("hours") = (CType((row.Cells(5).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("discount") = (CType((row.Cells(6).Controls(0)), TextBox)).Text
-        dt.Rows(row.DataItemIndex)("total") = (CType((row.Cells(7).Controls(0)), TextBox)).Text
+        'dt.Rows(row.DataItemIndex)("total") = (CType((row.Cells(7).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("status") = (CType((row.Cells(8).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("paymentrec") = (CType((row.Cells(9).Controls(0)), TextBox)).Text
-        ''If dt.Rows(row.DataItemIndex)("paymentrec")).Text = "n/a" then 
-        ''Else
-        ''    If Date.TryParse((CType((row.Cells(9).Controls(0)), TextBox)).Text, dt.Rows(row.DataItemIndex)("paymentrec")) = True Then
-        ''        dt.Rows(row.DataItemIndex)("paymentrec") = Date.Parse((CType((row.Cells(9).Controls(0)), TextBox)).Text).ToShortDateString()
-        ''    Else
-        ''        dt.Rows(row.DataItemIndex)("paymentrec") = "n/a"
-        ''    End If
-        ''End If
-
         dt.Rows(row.DataItemIndex)("details") = (CType((row.Cells(10).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("contact") = (CType((row.Cells(11).Controls(0)), TextBox)).Text
-        ' There will be 1 dt.rows line for each cell column in the data table
+        ' Calculate totals
+        Dim total As Decimal
+        Dim rate As Decimal
+        Dim textrate As String
+        For i As Integer = 0 To GridView2.Rows.Count - 1
+            Dim changedRow As String = GridView2.Rows(i).Cells(0).Text
+            If Gridview1.Rows(e.RowIndex).Cells(4).Text = changedRow Then
+                textrate = GridView2.Rows(i).Cells(2).Text
+                Double.TryParse(textrate, rate)
+            End If
+        Next
+        Dim hours As Decimal = CDec((CType((row.Cells(5).Controls(0)), TextBox)).Text)
+        Dim discount As Decimal = CDec((CType((row.Cells(6).Controls(0)), TextBox)).Text)
+        discount = discount / 100
 
+        total = ((hours * rate) - ((hours * rate) * discount))
+        dt.Rows(row.DataItemIndex)("total") = total
         ' Reset
         Gridview1.EditIndex = -1
         ' Bind Changes
         Session("dt") = dt
-        'Dim ds As DataSet = dt
+        'Dim ds As DataSet
         dt.WriteXml(pathToXML)
         bindToGridView()
     End Sub
@@ -226,12 +242,6 @@ Partial Class invoice
         Next
         Dim hours As Integer = CInt(txtHours.Text)
         Dim discount As Decimal = CInt(txtDiscount.Text)
-        'If discount = 100 Then
-        '    'Math will break without this. Other
-        '    discount = 1
-        'Else
-        '    discount = discount
-        'End If
         discount = discount / 100
 
         total = ((hours * rate) - ((hours * rate) * discount))
