@@ -60,7 +60,7 @@
         </div>
 
         <asp:gridview ID="Gridview1" CssClass="grid_12" AllowSorting="True"  runat="server" 
-            AutoGenerateColumns="False">
+            AutoGenerateColumns="False"  DataKeyNames="Invoices_Id">
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="client" SortExpression="client" HeaderText="Client Name" />
@@ -74,7 +74,15 @@
                 <asp:BoundField DataField="status" SortExpression="status" HeaderText="Status" />
                 <asp:BoundField DataField="paymentrec" SortExpression="paymentrec" 
                     HeaderText="Payment Received" />
-                <asp:BoundField DataField="details" SortExpression="details" HeaderText="Details" />
+                  <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:GridView ID="gridview2" AutoGenerateColumns="false" runat="server">
+                            <Columns>
+                                <asp:BoundField DataField="line_Text" HeaderText="Line Item" />
+                            </Columns>
+                        </asp:GridView>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="contact" SortExpression="contact" HeaderText="Contact Address" />
             </Columns>
         </asp:gridview>
