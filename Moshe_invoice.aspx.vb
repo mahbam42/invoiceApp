@@ -220,7 +220,7 @@ Partial Class invoice
 
         newRow("total") = total()
         newRow("status") = ddlStatus.SelectedValue
-        newRow("details") = txtDetails.Text
+        'newRow("details") = txtDetails.Text
         newRow("contact") = txtContact.Text
 
         'save it
