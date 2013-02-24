@@ -74,8 +74,9 @@ Partial Class invoice
         'Gridview1.DataBind()
         'get the dataset from the session or read the xml file if the xml file hasn't already been read.
         Dim ds As DataSet = getSessionDS()
+        Session("dt") = ds.Tables("invoices")
         'Bind the outer level grid.
-        Gridview1.DataSource = ds.Tables("invoices")
+        Gridview1.DataSource = Session("dt") 'ds.Tables("invoices")
         Gridview1.DataBind()
     End Sub
 
@@ -163,10 +164,10 @@ Partial Class invoice
         ' Update the values
         Dim row = Gridview1.Rows(e.RowIndex)
         dt.Rows(row.DataItemIndex)("client") = (CType((row.Cells(1).Controls(0)), TextBox)).Text
-        dt.Rows(row.DataItemIndex)("date") = (CType((row.Cells(2).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("date") = Date.TryParse((CType((row.Cells(2).Controls(0)), TextBox)).Text, dt.Rows(row.DataItemIndex)("date"))
         dt.Rows(row.DataItemIndex)("desc") = (CType((row.Cells(3).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("ordernumber") = (CType((row.Cells(4).Controls(0)), TextBox)).Text
-        dt.Rows(row.DataItemIndex)("hours") = (CType((row.Cells(5).Controls(0)), TextBox)).Text
+        dt.Rows(row.DataItemIndex)("hours") = CInt((CType((row.Cells(5).Controls(0)), TextBox)).Text)
         dt.Rows(row.DataItemIndex)("discount") = (CType((row.Cells(6).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("total") = (CType((row.Cells(7).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("status") = (CType((row.Cells(8).Controls(0)), TextBox)).Text
@@ -205,7 +206,7 @@ Partial Class invoice
             Session("sortdir") = "ASC"
         End If
         dv.Sort = e.SortExpression + " " + Session("sortdir")
-        bindToGridView()
+        'bindToGridView()
     End Sub
 
 
