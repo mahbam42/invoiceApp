@@ -78,11 +78,13 @@
                 <asp:BoundField DataField="paymentrec" ItemStyle-CssClass="left" SortExpression="paymentrec" DataFormatString="{0:d}" ConvertEmptyStringToNull="true"  HeaderText="Payment Received" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:GridView ID="gridview2" AutoGenerateColumns="false" runat="server">
-                            <Columns>
-                                <asp:BoundField DataField="line_Text" HeaderText="Line Item" />
-                            </Columns>
-                        </asp:GridView>
+                        <div style="width: 200px;">
+                            <asp:GridView ID="gridview2" Width="100%" AutoGenerateColumns="false" runat="server">
+                                <Columns>
+                                    <asp:BoundField DataField="line_Text" HeaderText="Line Item" />
+                                </Columns>
+                            </asp:GridView>
+                        </div>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="contact" ItemStyle-CssClass="left" SortExpression="contact" HeaderText="Contact Address" />
