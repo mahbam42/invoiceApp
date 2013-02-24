@@ -61,14 +61,14 @@
         </div>
     </div>
         <asp:gridview ID="Gridview1" CssClass="gridview1" AllowSorting="True"  runat="server" 
-            AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" 
+            AutoGenerateColumns="False" DataKeyNames="Invoices_Id" BackColor="LightGoldenrodYellow" 
             BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" 
             GridLines="None">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="client" ItemStyle-CssClass="left" SortExpression="client" HeaderText="Client Name" />
-                <asp:BoundField DataField="date" ItemStyle-CssClass="left" SortExpression="date" DataFormatString="{0:d}" HeaderText="Date" />
+                <asp:BoundField DataField="date" ItemStyle-CssClass="left" SortExpression="date" DataFormatString="{0:mm-dd-yyyy}" HeaderText="Date" />
                 <asp:BoundField DataField="desc" ItemStyle-CssClass="left" SortExpression="desc" HeaderText="Description" />
                 <asp:BoundField DataField="ordernumber" ItemStyle-CssClass="left"  SortExpression="ordernumber" HeaderText="Invoice #" />
                 <asp:BoundField DataField="hours" ItemStyle-CssClass="right" SortExpression="hours" DataFormatString="{0:n}" HeaderText="Hours"  />
@@ -76,7 +76,15 @@
                 <asp:BoundField DataField="total" ItemStyle-CssClass="right" SortExpression="total" DataFormatString="{0:c}" HeaderText="Total"/>
                 <asp:BoundField DataField="status" ItemStyle-CssClass="left" SortExpression="status" HeaderText="Status" />
                 <asp:BoundField DataField="paymentrec" ItemStyle-CssClass="left" SortExpression="paymentrec" DataFormatString="{0:d}" ConvertEmptyStringToNull="true"  HeaderText="Payment Received" />
-                <asp:BoundField DataField="details" ItemStyle-CssClass="left" SortExpression="details" HeaderText="Details" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:GridView ID="gridview2" AutoGenerateColumns="false" runat="server">
+                            <Columns>
+                                <asp:BoundField DataField="line_Text" HeaderText="Line Item" />
+                            </Columns>
+                        </asp:GridView>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="contact" ItemStyle-CssClass="left" SortExpression="contact" HeaderText="Contact Address" />
             </Columns>
             <FooterStyle BackColor="Tan" />
