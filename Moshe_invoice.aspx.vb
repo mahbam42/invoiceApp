@@ -255,7 +255,7 @@ Partial Class invoice
         newRow("desc") = txtDesc.Text
         newRow("ordernumber") = invoiceNumber(ddlBudgetCode.SelectedValue)
         newRow("hours") = txtHours.Text
-        newRow("discount") = txtDiscount.Text + "%"
+        newRow("discount") = txtDiscount.Text
         lineitems()
         newRow("total") = total()
         newRow("status") = ddlStatus.SelectedValue
@@ -274,20 +274,21 @@ Partial Class invoice
         'newRow(0) = TextBox3.Text
 
         'save it
-        ds.Tables("test").Rows.Add(newRow)
-        Session("dt") = ds.Tables(0)
+        ' ds.Tables("test").Rows.Add(newRow)
+        ' Session("dt") = ds.Tables(0)
 
         Dim newLineItem As DataRow = ds.Tables("line").NewRow()
         Dim items As String()
         Dim delimiter As String = ";"
-        If txtDesc.Text.Contains(";") Then
+        If txtDetails.Text.Contains(";") Then
             Dim item As String
-            items = txtDesc.Text.Split(delimiter)
+            items = txtDetails.Text.Split(delimiter)
             For Each item In items
 
-                newLineItem(1) = txtDesc.Text
+                newLineItem(0) = item
+                ds.Tables("line").Rows.Add(newLineItem)
             Next
-            ds.Tables("line").Rows.Add(newLineItem)
+            'ds.Tables("line").Rows.Add(newLineItem)
         End If
     End Sub
 
