@@ -256,7 +256,7 @@ Partial Class invoice
         newRow("ordernumber") = invoiceNumber(ddlBudgetCode.SelectedValue)
         newRow("hours") = txtHours.Text
         newRow("discount") = txtDiscount.Text + "%"
-
+        lineitems()
         newRow("total") = total()
         newRow("status") = ddlStatus.SelectedValue
         'newRow("details") = txtDetails.Text
@@ -267,6 +267,28 @@ Partial Class invoice
         Session("dt") = ds.Tables(0)
         ds.WriteXml(Server.MapPath("invoices.xml"))
         bindToGridView()
+    End Sub
+
+    Private Sub lineitems()
+        Dim newRow As DataRow = ds.Tables(0).NewRow()
+        'newRow(0) = TextBox3.Text
+
+        'save it
+        ds.Tables("test").Rows.Add(newRow)
+        Session("dt") = ds.Tables(0)
+
+        Dim newLineItem As DataRow = ds.Tables("line").NewRow()
+        Dim items As String()
+        Dim delimiter As String = ";"
+        If txtDesc.Text.Contains(";") Then
+            Dim item As String
+            items = txtDesc.Text.Split(delimiter)
+            For Each item In items
+
+                newLineItem(1) = txtDesc.Text
+            Next
+            ds.Tables("line").Rows.Add(newLineItem)
+        End If
     End Sub
 
     Protected Function total() As Decimal
