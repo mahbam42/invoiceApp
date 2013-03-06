@@ -20,6 +20,7 @@ Partial Class invoice
         ' Reads invoices.xml and stores it to a dataTable accessable as a session variable 
         pathToXML = Server.MapPath(pathToXML)
         ds = New DataSet
+        ' type the columns of ds.tables("invoices") here 
         ds.ReadXml(pathToXML)
         '' set types for the the columns in the dataTable
         'dt.TableName = "Invoices"
@@ -256,7 +257,6 @@ Partial Class invoice
         newRow("ordernumber") = invoiceNumber(ddlBudgetCode.SelectedValue)
         newRow("hours") = txtHours.Text
         newRow("discount") = txtDiscount.Text
-        lineitems()
         newRow("total") = total()
         newRow("status") = ddlStatus.SelectedValue
         'newRow("details") = txtDetails.Text
@@ -264,32 +264,30 @@ Partial Class invoice
 
         'save it
         ds.Tables(0).Rows.Add(newRow)
+        lineitems()
         Session("dt") = ds.Tables(0)
         ds.WriteXml(Server.MapPath("invoices.xml"))
         bindToGridView()
     End Sub
 
     Private Sub lineitems()
-        Dim newRow As DataRow = ds.Tables(0).NewRow()
-        'newRow(0) = TextBox3.Text
-
-        'save it
-        ' ds.Tables("test").Rows.Add(newRow)
-        ' Session("dt") = ds.Tables(0)
-
-        Dim newLineItem As DataRow = ds.Tables("line").NewRow()
+        'Dim newRow As DataRow = ds.Tables(0).NewRow()
+        Dim lineCode As Integer = ds.Tables("invoices").Rows.Count - 1
         Dim items As String()
         Dim delimiter As String = ";"
         If txtDetails.Text.Contains(";") Then
             Dim item As String
             items = txtDetails.Text.Split(delimiter)
             For Each item In items
-
-                newLineItem(0) = item
-                ds.Tables("line").Rows.Add(newLineItem)
+                ds.Tables("line").Rows.Add(New Object() {item.Trim}) ', lineCode})
             Next
+
             'ds.Tables("line").Rows.Add(newLineItem)
+        Else
+            ds.Tables("line").Rows.Add(New Object() {txtDetails.Text}) ', lineCode})
         End If
+        ' add an elseif for generic "labor performed (4 hour minimum) ' or take the value of txtHours.text and concat everything!
+
     End Sub
 
     Protected Function total() As Decimal
