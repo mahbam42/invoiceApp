@@ -18,39 +18,39 @@
                 <tr>
                     <td>
                         Client Name:<br />
-                        <asp:TextBox ID="txtClient" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtClient" TabIndex="10" runat="server"></asp:TextBox></td>
                     
                     <td>
                         Gig/Event Name:<br />
-                        <asp:TextBox ID="txtDesc" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtDesc" TabIndex="20" runat="server"></asp:TextBox></td>
                     <td colspan="2">
                         Details:<br />
-                        <asp:TextBox ID="txtDetails" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtDetails" TabIndex="30" runat="server"></asp:TextBox></td>
                     <td>
                         Client Contact:<br />
-                        <asp:TextBox ID="txtContact" TextMode="Email" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtContact" TabIndex="40" TextMode="Email" runat="server"></asp:TextBox></td>
                     <td rowspan="2"><!-- Buttons -->
-                        <asp:Button ID="btnAdd" runat="server" CssClass="add" Text="Add" /> 
+                        <asp:Button ID="btnAdd" TabIndex="100" runat="server" CssClass="add" Text="Add" /> 
                         <asp:Button ID="btnClear" runat="server" CssClass="btnClear" Text="Clear" /><br />
                         <asp:Button ID="btnSend" runat="server" Text="Invoice" /></td>
                 </tr>
                 <tr>
                     <td>
                         Date:<br />
-                        <asp:TextBox ID="txtDate" TextMode="Date" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtDate" TabIndex="50" TextMode="Date" runat="server"></asp:TextBox></td>
                     <td>
                         Budget Code:<br />
-                        <asp:DropDownList ID="ddlBudgetCode" runat="server">
+                        <asp:DropDownList ID="ddlBudgetCode" TabIndex="60" runat="server">
                         </asp:DropDownList></td>
                     <td>
                         Hours:<br />
-                        <asp:TextBox ID="txtHours" Width="2em" MaxLength="4" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtHours" Width="2em" TabIndex="70" MaxLength="4" runat="server"></asp:TextBox></td>
                     <td>
                         Discount:<br />
-                        <asp:TextBox ID="txtDiscount" Width="2em" MaxLength="4" runat="server"></asp:TextBox>%</td>
+                        <asp:TextBox ID="txtDiscount" Width="2em" TabIndex="80" MaxLength="4" runat="server"></asp:TextBox>%</td>
                     <td>
                         Status:
-                        <asp:DropDownList ID="ddlStatus" runat="server">
+                        <asp:DropDownList ID="ddlStatus" TabIndex="90" runat="server">
                         </asp:DropDownList></td>
                 </tr>
             </table>
