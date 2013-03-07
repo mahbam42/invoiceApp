@@ -245,7 +245,8 @@ Partial Class invoice
             Session("sortdir") = "ASC"
         End If
         dv.Sort = e.SortExpression + " " + Session("sortdir")
-        'bindToGridView()
+        Gridview1.DataSource = dt
+        Gridview1.DataBind()
     End Sub
 
 
