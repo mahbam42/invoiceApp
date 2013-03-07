@@ -271,7 +271,7 @@ Partial Class invoice
     End Sub
 
     Private Sub lineitems()
-        'Dim newRow As DataRow = ds.Tables(0).NewRow()
+        Dim newLineItem As DataRow = ds.Tables("line").NewRow()
         Dim lineCode As Integer = ds.Tables("invoices").Rows.Count - 1
         Dim items As String()
         Dim delimiter As String = ";"
@@ -279,7 +279,8 @@ Partial Class invoice
             Dim item As String
             items = txtDetails.Text.Split(delimiter)
             For Each item In items
-                ds.Tables("line").Rows.Add(New Object() {item.Trim}) ', lineCode})
+                newLineItem(1) = item.Trim
+                'ds.Tables("line").Rows.Add(New Object() {item.Trim}) ', lineCode})
             Next
 
             'ds.Tables("line").Rows.Add(newLineItem)
@@ -314,7 +315,7 @@ Partial Class invoice
         Dim order As String = ddlBudgetCode.SelectedValue
         Dim dt = CType(Session("dt"), DataTable)
         Dim i As Integer = 0
-        Dim c As Integer = 0 'c for count 
+        Dim c As Integer = 1 'c for count 
         For i = 0 To Gridview1.Rows.Count - 1
             Dim row = Left(Gridview1.Rows(i).Cells(4).Text, 3)
             If ddlBudgetCode.SelectedValue = row Then
