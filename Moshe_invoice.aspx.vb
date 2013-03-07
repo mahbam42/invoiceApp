@@ -42,7 +42,7 @@ Partial Class invoice
         '    dr = ds.Tables(0).Rows(i)
         '    dt.ImportRow(dr) ' you cannot copy rows from a table to another one 
         'Next
-        Session("dt") = dt 'create a session variable based on the dataTable to then manipulate
+        Session("dt") = ds.Tables("invoices") 'create a session variable based on the dataTable to then manipulate
 
         ' Reads budgetcodes.xml and stores it as a dataTable in a session variable "budget" 
         budgetCodes = Server.MapPath(budgetCodes)
@@ -201,7 +201,7 @@ Partial Class invoice
         'dt.Rows(row.DataItemIndex)("total") = (CType((row.Cells(7).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("status") = (CType((row.Cells(8).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("paymentrec") = (CType((row.Cells(9).Controls(0)), TextBox)).Text
-        dt.Rows(row.DataItemIndex)("details") = (CType((row.Cells(10).Controls(0)), TextBox)).Text
+        'dt.Rows(row.DataItemIndex)("details") = (CType((row.Cells(10).Controls(0)), TextBox)).Text
         dt.Rows(row.DataItemIndex)("contact") = (CType((row.Cells(11).Controls(0)), TextBox)).Text
         ' Calculate totals
         Dim total As Decimal
